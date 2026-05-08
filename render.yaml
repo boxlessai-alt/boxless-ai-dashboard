@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: boxless-ai-dashboard
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server/index.mjs
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: GOOGLE_SHEET_ID
+        sync: false
+      - key: GOOGLE_SERVICE_ACCOUNT_EMAIL
+        sync: false
+      - key: GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
